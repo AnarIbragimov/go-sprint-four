@@ -103,7 +103,8 @@ const (
 func WalkingSpentCalories(action int, duration, weight, height float64) float64 {
 	// ваш код здесь
 	var speed float64 = meanSpeed(action, duration) * kmhInMsec
-	return (walkingCaloriesWeightMultiplier*weight + (math.Pow(speed, 2)/height)*walkingSpeedHeightMultiplier*weight) * duration * minInH
+	var heightInCM float64 = height / cmInM
+	return (walkingCaloriesWeightMultiplier*weight + (math.Pow(speed, 2)/heightInCM)*walkingSpeedHeightMultiplier*weight) * duration * minInH
 }
 
 // Константы для расчета калорий, расходуемых при плавании.
